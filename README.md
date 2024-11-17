@@ -1,34 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JWT Refresh Example
+
+This project demonstrates an example of JWT (JSON Web Token) exchange with a backend server, including a refresh mechanism. The refresh token is passed in an HTTP-only cookie by the server. Once the access token becomes obsolete, the application automatically uses the refresh token with Axios interceptors to obtain a new access token.
+
+## Features
+
+- JWT authentication
+- Access token and refresh token handling
+- Automatic token refresh using Axios interceptors
+- Secure HTTP-only cookies for refresh tokens
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- npm or yarn
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/yourusername/jwt-refresh-example.git
+   cd jwt-refresh-example
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Running the Application
 
-## Deploy on Vercel
+1. Start the backend server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run server
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Start the frontend application:
+
+   ```bash
+   npm start
+   ```
+
+### Usage
+
+1. Register a new user or log in with existing credentials.
+2. The server will issue an access token and a refresh token (stored in an HTTP-only cookie).
+3. The access token is used for authenticated requests.
+4. When the access token expires, Axios interceptors will automatically use the refresh token to obtain a new access token.
+
+## Project Structure
+
+- `src/`: Contains the source code for the frontend application.
+- `server/`: Contains the source code for the backend server.
+- `public/`: Contains static assets.
+
+## Axios Interceptors
+
+The Axios interceptors are set up to handle token refresh automatically. When an API request fails due to an expired access token, the interceptor will use the refresh token to get a new access token and retry the original request.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- [Axios](https://github.com/axios/axios)
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
