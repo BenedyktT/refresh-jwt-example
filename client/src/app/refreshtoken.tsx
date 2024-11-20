@@ -5,10 +5,8 @@ import { useSession } from "./context";
 import Button from "./button";
 
 export const refresh = async (): Promise<string> => {
-  const response = await axios.post("/accounts/refresh_token", null, {
-    withCredentials: true,
-  });
-
+  const response = await axios.get("/api/ping");
+  console.log({ response });
   if (!response.headers.authorization) {
     throw new Error("No token found");
   }
