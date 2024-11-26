@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
+class User::SessionsController < Devise::SessionsController
   include RackSessionsFix
 
   def respond_with(resource, _opts = {})
