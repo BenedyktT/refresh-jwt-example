@@ -17,7 +17,8 @@ class RefreshTokenGenerator
     {
       value: jwt,
       httponly: true,
-      expires: REFRESH_TOKEN_VALIDITY_DAYS.days.from_now
+      expires: REFRESH_TOKEN_VALIDITY_DAYS.days.from_now,
+      secure: Rails.env.production?
     }
   end
 
