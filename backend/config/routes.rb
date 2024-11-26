@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     }, defaults: {format: :json}
 
   devise_scope :user do
-    post "users/refresh_token", to: "users/sessions#refresh_token"
+    post "users/refresh_token", to: "user/sessions#refresh_token"
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
